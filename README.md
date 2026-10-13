@@ -4,6 +4,8 @@ Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Ja
 
 ## Mulai dari sini
 
+Untuk mengulang semua bab dalam satu bacaan, buka [rangkuman lengkap Bab 1–7](cheatsheet-bab-01-07.md). Rangkuman itu memuat peta mekanisme, istilah, perbandingan, dan rumus; catatan tiap bab tetap tersedia untuk contoh serta latihan lebih rinci.
+
 1. Baca [Bab 1 — Jaringan Komputer dan Layanannya](bab-01-jaringan-dan-layanan.md).
 2. Lanjutkan [Bab 2 — Aplikasi dan Arsitektur Berlapis](bab-02-aplikasi-dan-arsitektur-berlapis.md).
 3. Lanjutkan [Bab 3 — Dasar Transmisi Digital](bab-03-dasar-transmisi-digital.md), [Bab 4 — Jaringan Sirkuit](bab-04-jaringan-sirkuit.md), [Bab 5 — Protokol Antartitik dan Data Link](bab-05-protokol-antartitik-dan-data-link.md), [Bab 6 — Akses Media dan LAN](bab-06-akses-media-dan-lan.md), lalu [Bab 7 — Jaringan Paket](bab-07-jaringan-paket.md).
