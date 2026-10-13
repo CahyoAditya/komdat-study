@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 772 475" role="img" aria-labelledby="title desc">
+<title id="title">Perbandingan line coding NRZ-L, Manchester, dan AMI</title>
+<desc id="desc">Bit 1 0 1 1 0 0 1. NRZ-L: tinggi rendah tinggi tinggi rendah rendah tinggi. Manchester: rendah ke tinggi untuk satu dan tinggi ke rendah untuk nol. AMI: positif nol negatif positif nol nol negatif.</desc>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Arial,sans-serif;fill:#17233a} .small{font-size:14px}.label{font-size:18px;font-weight:bold}.head{font-size:22px;font-weight:bold}.grid{stroke:#d6dce6;stroke-width:1}.base{stroke:#9baac0;stroke-dasharray:4 4}.wave{fill:none;stroke:#1766b0;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.man{stroke:#b54b16}.ami{stroke:#16835d}</style>
+<text x="24" y="35" class="head">Line coding: bit 1 0 1 1 0 0 1</text>
+<text x="24" y="63" class="small">Konvensi: NRZ-L 1=H; Manchester 1=L→H; AMI 1 bergantian +V/−V.</text>
+<rect x="170" y="77" width="82" height="346" fill="#f5f8fc"/>
+<line x1="170" y1="77" x2="170" y2="423" class="grid"/>
+<text x="211.0" y="103" text-anchor="middle" class="label">1</text>
+<rect x="252" y="77" width="82" height="346" fill="#ffffff"/>
+<line x1="252" y1="77" x2="252" y2="423" class="grid"/>
+<text x="293.0" y="103" text-anchor="middle" class="label">0</text>
+<rect x="334" y="77" width="82" height="346" fill="#f5f8fc"/>
+<line x1="334" y1="77" x2="334" y2="423" class="grid"/>
+<text x="375.0" y="103" text-anchor="middle" class="label">1</text>
+<rect x="416" y="77" width="82" height="346" fill="#ffffff"/>
+<line x1="416" y1="77" x2="416" y2="423" class="grid"/>
+<text x="457.0" y="103" text-anchor="middle" class="label">1</text>
+<rect x="498" y="77" width="82" height="346" fill="#f5f8fc"/>
+<line x1="498" y1="77" x2="498" y2="423" class="grid"/>
+<text x="539.0" y="103" text-anchor="middle" class="label">0</text>
+<rect x="580" y="77" width="82" height="346" fill="#ffffff"/>
+<line x1="580" y1="77" x2="580" y2="423" class="grid"/>
+<text x="621.0" y="103" text-anchor="middle" class="label">0</text>
+<rect x="662" y="77" width="82" height="346" fill="#f5f8fc"/>
+<line x1="662" y1="77" x2="662" y2="423" class="grid"/>
+<text x="703.0" y="103" text-anchor="middle" class="label">1</text>
+<line x1="744" y1="77" x2="744" y2="423" class="grid"/>
+<text x="24" y="131" class="label">NRZ-L</text>
+<line x1="170" y1="125" x2="744" y2="125" class="base"/>
+<text x="110" y="98" class="small">+ / H</text>
+<text x="128" y="130" class="small">0</text>
+<text x="110" y="164" class="small">− / L</text>
+<path d="M 170 95 H 211 H 252 V 155 H 293 H 334 V 95 H 375 H 416 H 457 H 498 V 155 H 539 H 580 H 621 H 662 V 95 H 703 H 744" class="wave "/>
+<text x="24" y="261" class="label">Manchester</text>
+<line x1="170" y1="255" x2="744" y2="255" class="base"/>
+<text x="110" y="228" class="small">+ / H</text>
+<text x="128" y="260" class="small">0</text>
+<text x="110" y="294" class="small">− / L</text>
+<path d="M 170 285 H 211 V 225 H 252 H 293 V 285 H 334 H 375 V 225 H 416 V 285 H 457 V 225 H 498 H 539 V 285 H 580 V 225 H 621 V 285 H 662 H 703 V 225 H 744" class="wave man"/>
+<text x="24" y="391" class="label">AMI</text>
+<line x1="170" y1="385" x2="744" y2="385" class="base"/>
+<text x="110" y="358" class="small">+ / H</text>
+<text x="128" y="390" class="small">0</text>
+<text x="110" y="424" class="small">− / L</text>
+<path d="M 170 355 H 211 H 252 V 385 H 293 H 334 V 415 H 375 H 416 V 355 H 457 H 498 V 385 H 539 H 580 H 621 H 662 V 415 H 703 H 744" class="wave ami"/>
+<text x="24" y="456" class="small">Batas vertikal = batas bit. Pada Manchester, perubahan di tengah setiap bit membawa informasi.</text>
+</svg>
