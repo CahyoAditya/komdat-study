@@ -1,6 +1,6 @@
 # Belajar Komunikasi Data dan Jaringan Komputer
 
-Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Jaringan Komputer**. Bab 1 dan 2 mengikuti urutan setiap subbab pada daftar isi buku, lalu menjelaskan konsepnya dengan contoh sederhana. Ditulis dengan kalimat sendiri berdasarkan kontrak perkuliahan dan bacaan yang diberikan di kelas.
+Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Jaringan Komputer**. Bab 1 dan 2 mengikuti urutan setiap subbab buku, lalu menjelaskan konsepnya dengan contoh sederhana. Bab 1 telah diperluas berdasarkan isi buku dan seluruh slide kuliah Bab 1, termasuk mekanisme serta kamus istilah.
 
 ## Mulai dari sini
 
@@ -31,12 +31,12 @@ Urutan ini mengikuti **pertemuan 1–8** dalam `kom1314_KDJK-kontrak-perkuliahan
 
 Nomor subbagian seperti 1.1.1 dan 2.5.5 juga mengikuti daftar isi buku. Materi pelengkap kontrak kuliah diberi bagian tersendiri. Bagian 2.4–2.5 bertanda pilihan di daftar isi buku; cakupan ujian tetap mengikuti arahan dosen.
 
-## Fokus Bab 1 dalam 30 menit
+## Fokus Bab 1 dalam 60 menit
 
-- **5 menit:** pahami perbedaan *aplikasi*, *layanan*, *jaringan*, dan *arsitektur*.
-- **10 menit:** ikuti evolusi telegraf → telepon → jaringan komputer.
-- **10 menit:** bandingkan tiga cara pengiriman: pesan utuh, sirkuit, dan paket.
-- **5 menit:** kerjakan latihan dan periksa kuncinya.
+- **10 menit:** pahami *aplikasi*, *layanan*, *jaringan*, arsitektur, *switch*, dan *multiplexer*.
+- **20 menit:** ikuti mekanisme telegraf, telepon, terminal, ARPANET, Ethernet, dan Internet.
+- **15 menit:** bedakan pesan utuh, sirkuit, paket, serta keterlambatan dan mutu layanan.
+- **15 menit:** baca faktor teknologi, regulasi, pasar, dan standar; lalu kerjakan latihan.
 
 ## Fokus Bab 2 dalam 35 menit
 
@@ -48,7 +48,7 @@ Nomor subbagian seperti 1.1.1 dan 2.5.5 juga mengikuti daftar isi buku. Materi p
 ## Sumber
 
 - Kontrak perkuliahan KOM1314 Semester 1 2026/2027, khususnya tabel topik pertemuan 1–2.
-- Alberto Leon-Garcia dan Indra Widjaja, *Communication Networks: Fundamental Concepts and Key Architectures*, edisi ke-2, Bab 1–2. Nama salinan menyebut “2003”, sedangkan halaman hak cipta buku edisi kedua mencantumkan 2004. Salinan PDF buku yang tersedia berisi halaman awal dan daftar isi; penjelasan rinci juga dirujukkan ke slide bab terkait.
+- Alberto Leon-Garcia dan Indra Widjaja, *Communication Networks: Fundamental Concepts and Key Architectures*, edisi ke-2, Bab 1–2. Nama salinan menyebut “2003”, sedangkan halaman hak cipta edisi kedua mencantumkan 2004. **Koreksi:** salinan PDF yang tersedia memuat isi Bab 1 lengkap, bukan hanya halaman awal dan daftar isi. Penjelasan Bab 1 merujuk langsung ke bab tersebut dan slide kuliah.
 - Slide kuliah `Garcia-2003_ch1-Communication Networks and Services` dalam paket materi Sensei.
 - Slide kuliah `Garcia-2003_ch2-Applications and Layered Architectures.pdf` dalam paket materi Sensei.
 - `UTS KDJK 2019.pdf` dari paket contoh soal Sensei, yaitu UTS KDJK semester genap 2018/2019. Format pilihan ganda, menjodohkan, dan uraian singkat dijadikan patokan untuk latihan baru Bab 1–2. Soal asli juga memuat materi pertemuan 3–7 yang belum dicakup dua bab ini.
