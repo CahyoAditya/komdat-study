@@ -1,6 +1,6 @@
 # Belajar Komunikasi Data dan Jaringan Komputer
 
-Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Jaringan Komputer**. Mulai dari gambaran besar, lalu masuk ke istilah dan cara kerja jaringan. Ditulis dengan kalimat sendiri berdasarkan kontrak perkuliahan dan bacaan yang diberikan di kelas.
+Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Jaringan Komputer**. Bab 1 dan 2 mengikuti urutan setiap subbab pada daftar isi buku, lalu menjelaskan konsepnya dengan contoh sederhana. Ditulis dengan kalimat sendiri berdasarkan kontrak perkuliahan dan bacaan yang diberikan di kelas.
 
 ## Mulai dari sini
 
@@ -22,6 +22,15 @@ Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Ja
 
 Urutan ini mengikuti **pertemuan 1–8** dalam `kom1314_KDJK-kontrak-perkuliahan_Sem1-202627-signed.pdf`. Ujian tetap mengikuti pengumuman dosen; tabel ini hanya peta belajar, bukan kisi-kisi resmi.
 
+## Susunan menurut buku
+
+| Bab | Subbab buku | Letak penjelasan |
+|---|---|---|
+| 1 | 1.1 Evolusi arsitektur; 1.2 arsitektur masa depan; 1.3 faktor evolusi | [Bab 1](bab-01-jaringan-dan-layanan.md) |
+| 2 | 2.1 Contoh protokol; 2.2 OSI; 2.3 TCP/IP; 2.4 Berkeley API; 2.5 protokol aplikasi dan utilitas | [Bab 2](bab-02-aplikasi-dan-arsitektur-berlapis.md) |
+
+Nomor subbagian seperti 1.1.1 dan 2.5.5 juga mengikuti daftar isi buku. Materi pelengkap kontrak kuliah diberi bagian tersendiri. Bagian 2.4–2.5 bertanda pilihan di daftar isi buku; cakupan ujian tetap mengikuti arahan dosen.
+
 ## Fokus Bab 1 dalam 30 menit
 
 - **5 menit:** pahami perbedaan *aplikasi*, *layanan*, *jaringan*, dan *arsitektur*.
@@ -31,15 +40,15 @@ Urutan ini mengikuti **pertemuan 1–8** dalam `kom1314_KDJK-kontrak-perkuliahan
 
 ## Fokus Bab 2 dalam 35 menit
 
-- **10 menit:** ikuti contoh membuka situs: DNS → TCP → HTTP.
+- **10 menit:** pahami contoh membuka situs pada 2.1: DNS → TCP → HTTP.
 - **10 menit:** bedakan lapisan, layanan, dan protokol; pahami pembungkusan data.
-- **10 menit:** bandingkan tujuh lapisan OSI dengan susunan TCP/IP.
-- **5 menit:** jawab latihan, lalu periksa alasan pada kunci.
+- **10 menit:** bandingkan tujuh lapisan OSI (2.2) dengan TCP/IP (2.3).
+- **5 menit:** baca peta 2.4–2.5, lalu jawab latihan dan periksa kunci.
 
 ## Sumber
 
-- Kontrak perkuliahan KOM1314 Semester 1 2026/2027, khususnya tabel topik pertemuan 1.
-- Alberto Leon-Garcia dan Indra Widjaja, *Communication Networks: Fundamental Concepts and Key Architectures*, edisi ke-2, Bab 1: “Communication Networks and Services”. Salinan yang diberikan bernama “2003”; kontrak mencantumkan edisi internasional tahun 2004.
+- Kontrak perkuliahan KOM1314 Semester 1 2026/2027, khususnya tabel topik pertemuan 1–2.
+- Alberto Leon-Garcia dan Indra Widjaja, *Communication Networks: Fundamental Concepts and Key Architectures*, edisi ke-2, Bab 1–2. Nama salinan menyebut “2003”, sedangkan halaman hak cipta buku edisi kedua mencantumkan 2004. Salinan PDF buku yang tersedia berisi halaman awal dan daftar isi; penjelasan rinci juga dirujukkan ke slide bab terkait.
 - Slide kuliah `Garcia-2003_ch1-Communication Networks and Services` dalam paket materi Sensei.
 - Slide kuliah `Garcia-2003_ch2-Applications and Layered Architectures.pdf` dalam paket materi Sensei.
 

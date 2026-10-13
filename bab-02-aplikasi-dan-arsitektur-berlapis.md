@@ -1,10 +1,26 @@
 # Bab 2 — Aplikasi dan Arsitektur Berlapis
 
-> Pertanyaan utama: ketika sebuah situs terbuka di laptop, siapa mengerjakan apa?
+> Pertanyaan utama: ketika sebuah situs terbuka, bagian jaringan mana yang mengerjakan tiap langkah?
 
-Bab ini mengikuti pertemuan 2 kontrak KOM1314: konsep *layering*, model OSI, gambaran TCP/IP, serta protokol aplikasi dan utilitas. Penjelasan mengikuti Bab 2 dan slide *Applications and Layered Architectures* karya Leon-Garcia dan Widjaja. Contoh alamat dan perilaku di sini disederhanakan untuk belajar.
+Susunan 2.1–2.5 dan nomor subbagiannya mengikuti daftar isi Bab 2 buku Leon-Garcia dan Widjaja, edisi kedua. Bagian 2.4 dan 2.5 bertanda topik pilihan dalam daftar isi buku; tetap dijelaskan secara ringkas agar setiap subbab punya tempat. Penjelasan memakai bahasa sendiri dan slide kuliah, bukan salinan buku.
 
-## 1. Mulai dari satu kejadian: membuka situs
+## 2.1 Contoh Protokol, Layanan, dan Lapisan (*Examples of Protocols, Services, and Layering*)
+
+| Istilah | Arti sederhana | Contoh |
+|---|---|---|
+| **Lapisan (*layer*)** | Kelompok pekerjaan yang sejenis | Lapisan transport menangani komunikasi antarproses. |
+| **Layanan (*service*)** | Kemampuan yang diberikan sebuah lapisan kepada lapisan di atasnya | TCP menyediakan aliran byte yang andal bagi aplikasi. |
+| **Protokol (*protocol*)** | Aturan pertukaran pesan antara pihak setingkat | TCP mengatur nomor urut, pengakuan penerimaan, dan pengiriman ulang. |
+
+Bayangkan kantor pos. Bagian loket menyediakan **layanan** menerima kiriman. Dua kantor pos memakai **aturan** bersama tentang label dan penanganan kiriman: itulah analogi protokol. Loket dan pengangkutan adalah **lapisan tugas** yang berbeda. Analogi ini membantu mengingat pembagian kerja, tetapi paket jaringan tidak persis sama dengan paket pos.
+
+*Protokol* menentukan bentuk pesan, kapan pesan dikirim, serta tindakan saat pesan diterima atau waktunya habis. Contoh: HTTP mengenal permintaan dan respons; TCP mempunyai aturan untuk mendeteksi data yang belum diterima dan mengirimnya kembali.
+
+#### Mengapa tugas dibagi menjadi lapisan?
+
+Masalah besar menjadi beberapa masalah kecil. Pengembang peramban dapat memakai layanan transport tanpa merancang ulang kabel; teknologi Wi-Fi dapat berubah tanpa mengubah arti permintaan HTTP. Pembagian ini membantu desain, pengujian, dan penggantian bagian. Tetap ada biaya tambahan, seperti informasi kendali pada tiap lapisan.
+
+### 2.1.1 HTTP, DNS, dan SMTP
 
 Sensei mengetik nama situs dan menekan Enter. Agar halaman tampil, beberapa pekerjaan berbeda perlu selesai:
 
@@ -17,32 +33,34 @@ Sensei mengetik nama situs dan menekan Enter. Agar halaman tampil, beberapa peke
 ```mermaid
 flowchart LR
   A[Ketuk tautan] --> B[DNS mencari alamat IP]
-  B --> C[HTTP menyiapkan permintaan]
-  C --> D[TCP membawa aliran data]
-  D --> E[IP mengantar paket]
+  B --> C[TCP membentuk hubungan]
+  C --> D[HTTP menyiapkan permintaan]
+  D --> E[TCP dan IP membawa data]
   E --> F[Wi-Fi atau Ethernet mengirim lewat satu jalur]
   F --> G[Server menjawab; proses berjalan balik]
 ```
 
 Ini **contoh alur dari slide**, bukan syarat setiap situs masa kini. HTTPS menambahkan perlindungan TLS, dan HTTP/3 dapat memakai QUIC di atas UDP. Pokok pelajarannya tetap sama: satu tindakan pengguna memerlukan kerja sama beberapa lapisan.
 
-## 2. Tiga kata yang wajib dibedakan
+**Bedakan perannya:** DNS membantu menemukan alamat IP dari nama, HTTP mengatur permintaan dan respons sumber daya web, sedangkan SMTP mengatur pengiriman surel. Ketiganya contoh protokol aplikasi; tidak berarti ketiganya memakai transport yang selalu sama.
 
-| Istilah | Arti sederhana | Contoh |
+### 2.1.2 Layanan lapisan transport TCP dan UDP
+
+**TCP** menyediakan aliran byte yang andal dan berurutan antaraplikasi setelah hubungan logis dibentuk. **UDP** mengirim datagram tanpa jaminan keandalan atau urutan dari UDP sendiri. Keduanya menggunakan nomor port untuk membedakan aplikasi. HTTP klasik pada contoh slide memakai TCP; DNS sering memakai UDP untuk pertanyaan singkat, tetapi juga dapat memakai TCP.
+
+| Sifat | Berorientasi koneksi | Tanpa koneksi |
 |---|---|---|
-| **Lapisan (*layer*)** | Kelompok pekerjaan yang sejenis | Lapisan transport menangani komunikasi antarproses. |
-| **Layanan (*service*)** | Kemampuan yang diberikan sebuah lapisan kepada lapisan di atasnya | TCP menyediakan aliran byte yang andal bagi aplikasi. |
-| **Protokol (*protocol*)** | Aturan pertukaran pesan antara pihak setingkat | TCP mengatur nomor urut, pengakuan penerimaan, dan pengiriman ulang. |
+| Sebelum data utama | Ada tahap membentuk hubungan logis | Tidak perlu tahap pembentukan hubungan pada protokol itu |
+| Contoh | TCP | UDP, IP |
+| Hal yang harus diingat | “Koneksi” TCP bukan sirkuit fisik yang dipesan | “Tanpa koneksi” tidak berarti mustahil membangun keandalan pada lapisan lain |
 
-Bayangkan kantor pos. Bagian loket menyediakan **layanan** menerima kiriman. Dua kantor pos memakai **aturan** bersama tentang label dan penanganan kiriman: itulah analogi protokol. Loket dan pengangkutan adalah **lapisan tugas** yang berbeda. Analogi ini membantu mengingat pembagian kerja, tetapi paket jaringan tidak persis sama dengan paket pos.
+Jenis layanan di dua lapisan tidak harus sama. TCP yang berorientasi koneksi dapat bekerja di atas IP yang tanpa koneksi.
 
-*Protokol* menentukan bentuk pesan, kapan pesan dikirim, serta tindakan saat pesan diterima atau waktunya habis. Contoh: HTTP mengenal permintaan dan respons; TCP mempunyai aturan untuk mendeteksi data yang belum diterima dan mengirimnya kembali.
+Contoh pilihan: jika berkas harus diterima lengkap, layanan aliran andal memudahkan aplikasi. Jika aplikasi ingin mengatur sendiri cara menangani keterlambatan, layanan datagram dapat lebih sesuai. **UDP bukan sinonim “cepat pasti”;** hasil nyata bergantung pada jaringan dan aplikasinya.
 
-### Mengapa tugas dibagi menjadi lapisan?
+## 2.2 Model Acuan OSI (*The OSI Reference Model*)
 
-Masalah besar menjadi beberapa masalah kecil. Pengembang peramban dapat memakai layanan transport tanpa merancang ulang kabel; teknologi Wi-Fi dapat berubah tanpa mengubah arti permintaan HTTP. Pembagian ini membantu desain, pengujian, dan penggantian bagian. Tetap ada biaya tambahan, seperti informasi kendali pada tiap lapisan.
-
-## 3. Model OSI: tujuh lapisan untuk memetakan pekerjaan
+### 2.2.1 Tujuh lapisan OSI
 
 Baca tabel **dari atas ke bawah** ketika mengirim, lalu **dari bawah ke atas** ketika menerima.
 
@@ -68,11 +86,27 @@ flowchart TB
 
 **Jebakan ujian:** OSI adalah *model acuan*. Internet sehari-hari terutama menggunakan keluarga protokol TCP/IP, bukan kewajiban menjalankan tujuh protokol OSI secara terpisah. Fungsi presentasi dan sesi sering dikerjakan di tingkat aplikasi atau pustaka yang dipakainya.
 
-### Ujung dan perangkat perantara
+#### Ujung dan perangkat perantara
 
 Pada contoh sederhana, aplikasi dan transport berjalan pada perangkat pengirim serta penerima. *Router* di tengah terutama membaca informasi lapisan jaringan untuk meneruskan paket, lalu memakai data link dan fisik pada tiap sambungannya. Tidak perlu menganggap router biasa membaca isi HTTP untuk dapat meneruskan paket.
 
-## 4. TCP/IP: susunan yang dipakai Internet
+### 2.2.2 Tampilan bersama: lapisan, protokol, dan layanan
+
+Bayangkan dua komputer A dan B. Protokol mengatur komunikasi *sejajar* antara lapisan yang sama di A dan B; layanan diberikan *vertikal* dari satu lapisan kepada lapisan di atasnya pada satu komputer. Data sungguhan turun melewati lapisan A, melintasi jaringan, lalu naik pada B.
+
+```mermaid
+flowchart LR
+  AA[Aplikasi A] -. aturan HTTP .-> AB[Aplikasi B]
+  AA -->|memakai layanan| TA[Transport A]
+  TA -. aturan TCP .-> TB[Transport B]
+  TB -->|memberi layanan| AB
+```
+
+Contoh: HTTP adalah protokol aplikasi; TCP adalah protokol transport dan menyediakan layanan aliran byte untuk HTTP. OSI membantu memetakan tugas, tetapi bukan daftar yang mewajibkan satu perangkat menjalankan tujuh protokol terpisah.
+
+## 2.3 Gambaran Arsitektur TCP/IP (*Overview of TCP/IP Architecture*)
+
+### 2.3.1 Arsitektur TCP/IP
 
 Slide kuliah menggambarkan aplikasi di atas **TCP atau UDP**, di atas **IP**, di atas berbagai antarmuka jaringan. Untuk belajar, susunannya dapat ditulis begini:
 
@@ -98,7 +132,7 @@ flowchart TB
 
 **TCP** memberi aliran byte andal dan memakai sambungan logis. **UDP** memberi datagram tanpa jaminan pengiriman atau urutan dari UDP itu sendiri. **IP** memberi pengiriman paket *best effort* antardevais. Memakai TCP di atas IP tidak mengubah IP menjadi protokol yang menjamin setiap paket sampai; keandalan TCP ditangani pada lapisan transport.
 
-## 5. Data turun lapisan: pembungkusan (*encapsulation*)
+### 2.3.2 Cara lapisan bekerja bersama
 
 Misalkan aplikasi mengirim teks `HALO`. Tiap lapisan menambahkan informasi yang dibutuhkan untuk pekerjaannya. Informasi depan disebut **header**; data link dapat pula menambah **trailer** untuk pemeriksaan kesalahan.
 
@@ -114,11 +148,48 @@ Penerima membukanya dalam urutan sebaliknya. Proses ini disebut **decapsulation*
 
 Jangan hafal nama unit tanpa konteks: istilah umum adalah **PDU** (*protocol data unit*), yakni unit yang dipertukarkan oleh dua pihak pada lapisan yang sama. Data dari lapisan atas yang diserahkan ke lapisan bawah disebut **SDU** (*service data unit*). Bagi lapisan bawah, SDU itu menjadi isi yang dibungkus dalam PDU miliknya.
 
-### Potong, gabung, dan bagikan
+#### Potong, gabung, dan bagikan
 
 Jika data terlalu besar, lapisan dapat **memecah**nya menjadi beberapa unit dan penerima **menyatukannya kembali**. Jika banyak aplikasi memakai satu komputer, lapisan transport memakai **nomor port** untuk membedakan alirannya. Ini contoh *multiplexing*: banyak pengguna layanan berbagi lapisan di bawahnya. Alamat IP mengidentifikasi antarmuka pada jaringan; port membantu memilih proses atau layanan pada perangkat tersebut.
 
-## 6. Protokol aplikasi yang sering ditanya
+### 2.3.3 Tinjauan protokol
+
+| Lapisan | Contoh protokol/teknologi | Tugas satu kalimat |
+|---|---|---|
+| Aplikasi | HTTP, DNS, SMTP | Menyatakan kebutuhan aplikasi. |
+| Transport | TCP, UDP | Menghubungkan proses dan membedakan port. |
+| Internet | IP, ICMP | Mengantar paket antarnetwork dan melaporkan kondisi tertentu. |
+| Akses jaringan | Ethernet, Wi-Fi | Memindahkan frame melalui sambungan setempat. |
+
+**Periksa dengan contoh:** permintaan HTTP masuk ke TCP, dibungkus IP, kemudian dibawa frame jaringan setempat. Router meneruskan paket IP melalui sambungan lain. Nama protokol dan nama lapisan perlu dibedakan.
+
+## 2.4 Berkeley API
+
+*API* adalah cara aplikasi meminta layanan dari sistem operasi. Buku memakai antarmuka *Berkeley sockets* untuk memperlihatkan bagaimana program berkomunikasi melalui jaringan. **Socket** ialah titik komunikasi yang diakses program; nomor port membantu memilih layanan pada sebuah perangkat. Sensei cukup memahami alurnya dahulu, tanpa harus menghafal kode C.
+
+### 2.4.1 Pemanggilan sistem socket (*Socket System Calls*)
+
+Contoh server TCP: `socket()` membuat socket → `bind()` memasang alamat/port lokal → `listen()` menunggu → `accept()` menerima hubungan → `read()`/`write()` bertukar byte → `close()` menutup. Klien TCP memakai `socket()` → `connect()` → `read()`/`write()` → `close()`.
+
+```mermaid
+sequenceDiagram
+  participant K as Klien
+  participant S as Server
+  S->>S: socket, bind, listen
+  K->>K: socket
+  K->>S: connect
+  S->>S: accept
+  K->>S: write permintaan
+  S->>K: write jawaban
+```
+
+Pada UDP, program dapat memakai `sendto()` dan `recvfrom()` untuk datagram tanpa `listen()` atau `accept()`. `accept()` menghasilkan socket baru untuk satu hubungan TCP, sedangkan socket pendengar tetap dapat menerima hubungan lain. Panggilan nyata dapat gagal; diagram hanya menunjukkan jalur yang berhasil.
+
+### 2.4.2 Fungsi utilitas jaringan (*Network Utility Functions*)
+
+Program sering perlu menerjemahkan nama host menjadi alamat jaringan serta mengubah bilangan port/alamat ke urutan byte yang dipakai protokol. Di contoh klasik buku dan slide, keluarga fungsi resolusi nama seperti `gethostbyname()` serta konversi seperti `htons()` membantu pekerjaan ini. `htons()` mengubah bilangan 16-bit dari urutan byte komputer ke urutan byte jaringan; fungsi itu **tidak mencari alamat IP**. Dalam program baru, antarmuka seperti `getaddrinfo()` lebih umum untuk resolusi nama, tetapi fokus bagian ini adalah peran fungsi pembantu, bukan hafalan sintaks.
+
+## 2.5 Protokol Lapisan Aplikasi dan Utilitas TCP/IP (*Application Layer Protocols and TCP/IP Utilities*)
 
 | Nama | Fungsi utama | Hubungan yang perlu diingat |
 |---|---|---|
@@ -129,25 +200,27 @@ Jika data terlalu besar, lapisan dapat **memecah**nya menjadi beberapa unit dan 
 
 Contoh yang sering tertukar: **DNS dan HTTP sama-sama protokol aplikasi**, walau DNS mencari alamat dan HTTP meminta isi web. **TCP dan UDP sama-sama protokol transport**. **IP adalah protokol lapisan Internet/jaringan**.
 
-### Utilitas untuk mengamati jaringan
+### 2.5.1 Telnet
 
-- `ping` memakai ICMP Echo untuk mencoba mengetahui apakah tujuan menjawab dan mengukur waktu pulang-pergi. Tidak ada jawaban tidak selalu berarti perangkat mati; balasan dapat diblokir.
-- `traceroute` atau `tracert` mencoba menunjukkan titik perantara dengan membatasi umur paket (*TTL* atau *hop limit*). Hasilnya bisa tidak lengkap jika perangkat perantara tidak menjawab.
-- `ipconfig` pada Windows atau `ip addr` pada Linux menampilkan informasi alamat lokal. `netstat` atau `ss` membantu melihat sambungan dan soket. Nama perintah berbeda menurut sistem.
+Telnet menyediakan terminal jarak jauh berbasis teks: pengguna mengetik perintah pada komputer lain melalui jaringan. Contoh ini membantu melihat hubungan aplikasi, socket, dan transport. Telnet klasik tidak mengenkripsi isi komunikasi, sehingga untuk akses jarak jauh yang membutuhkan kerahasiaan, SSH lazim dipakai sekarang.
 
-Ini alat pengamatan, bukan lapisan baru dalam OSI.
+### 2.5.2 File Transfer Protocol (FTP)
 
-## 7. Dua cara layanan berkomunikasi
+FTP mengirim dan mengambil file. Contoh klasik memakai hubungan kendali untuk perintah dan hubungan data untuk isi file. Jadi “mengirim file” adalah pekerjaan aplikasi, sedangkan TCP mengurus aliran byte yang dipakainya. Variasi aktif/pasif menentukan cara hubungan data dibuat; itu lebih lanjut daripada gagasan inti bab ini.
 
-| Sifat | Berorientasi koneksi | Tanpa koneksi |
-|---|---|---|
-| Sebelum data utama | Ada tahap membentuk hubungan logis | Tidak perlu tahap pembentukan hubungan pada protokol itu |
-| Contoh | TCP | UDP, IP |
-| Hal yang harus diingat | “Koneksi” TCP bukan sirkuit fisik yang dipesan | “Tanpa koneksi” tidak berarti mustahil membangun keandalan pada lapisan lain |
+### 2.5.3 HTTP dan World Wide Web
 
-Jenis layanan di dua lapisan tidak harus sama. TCP yang berorientasi koneksi dapat bekerja di atas IP yang tanpa koneksi.
+Web adalah kumpulan sumber daya yang dapat dirujuk lewat URL; HTTP adalah protokol permintaan dan respons untuk mengambil atau mengirim sumber daya tersebut. Pada contoh buku/slide, klien mengirim `GET`, lalu server membalas status dan isi. **Web bukan HTTP saja:** DNS, transport, IP, dan media jaringan ikut bekerja. HTTPS menambahkan perlindungan TLS; itu contoh masa kini di luar alur HTTP klasik yang dipakai untuk belajar.
 
-## 8. Peta cepat menjelang ujian
+### 2.5.4 Utilitas IP
+
+`ping` mengirim ICMP Echo dan mengukur waktu pulang-pergi jika ada balasan. `traceroute` atau `tracert` berusaha menampilkan beberapa titik perantara dengan membatasi umur paket. Tidak ada balasan `ping` **tidak cukup** untuk menyimpulkan tujuan mati, sebab balasan dapat dibatasi atau diblokir. `ipconfig` di Windows atau `ip addr` di Linux membantu melihat alamat lokal; `netstat` atau `ss` membantu melihat sambungan. Ini alat pengamatan, bukan lapisan OSI baru.
+
+### 2.5.5 Tcpdump dan penganalisis protokol jaringan
+
+Penganalisis paket seperti `tcpdump` menampilkan paket yang terlihat pada antarmuka yang diamati. Dari catatan waktu, alamat, protokol, dan port, kita dapat menelusuri contoh DNS atau TCP. Tangkapan pada satu titik **bukan** pandangan seluruh jaringan; lalu lintas lain mungkin tak melewati titik itu, dan isi yang terenkripsi tidak terbaca sebagai teks biasa.
+
+## Ringkasan menjelang ujian
 
 ```text
 Nama situs → DNS → alamat IP
@@ -162,7 +235,7 @@ Layanan = kemampuan bagi lapisan di atas
 Protokol = aturan antar pihak setingkat
 ```
 
-## 9. Latihan bertahap
+## Latihan bertahap
 
 Jawab dahulu tanpa membuka kunci.
 
