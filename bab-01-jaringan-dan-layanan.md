@@ -87,6 +87,17 @@ flowchart LR
 
 **Jangan samakan “punya koneksi” pada aplikasi dengan circuit switching.** Koneksi TCP, misalnya, adalah hubungan logis antarujung di atas jaringan yang umumnya mengirim paket; bukan berarti satu sirkuit fisik dipesan sepanjang perjalanan.
 
+#### Empat contoh yang muncul dalam pola soal UTS lama
+
+| Contoh | Pengelompokan yang tepat | Alasannya |
+|---|---|---|
+| Jaringan telepon tradisional (PSTN) | *Circuit switching* | Sirkuit disiapkan selama panggilan. |
+| IP | *Packet switching* jenis *datagram* | Setiap paket dibawa dengan alamat tujuan; jaringan tidak harus menyiapkan jalur tetap sebelumnya. |
+| ATM | *Packet switching* jenis *virtual circuit* | Jalur logis disiapkan dahulu, lalu unit data mengikuti identitas jalur tersebut. Ini bukan sirkuit fisik khusus seperti pada telepon tradisional. |
+| Ethernet pada contoh LAN lama dengan media bersama | Komunikasi *broadcast* pada satu media | Beberapa perangkat berbagi media; satu transmisi dapat terlihat oleh perangkat lain pada media itu. Ethernet modern yang memakai *switch* tidak berarti semua lalu lintasnya disiarkan ke seluruh LAN. |
+
+*Datagram* dan *virtual circuit* sama-sama cara membawa unit data melalui jaringan paket. Pembeda utamanya: datagram tidak mensyaratkan pembentukan jalur logis lebih dahulu, sedangkan *virtual circuit* mensyaratkannya. Ini membantu membaca pilihan jawaban pada UTS lama tanpa menyamakan *virtual circuit* dengan *circuit switching*.
+
 #### Ikuti satu pesan sampai tujuan
 
 1. Aplikasi membaca foto dan menyiapkan data untuk dikirim.
@@ -248,10 +259,75 @@ Tutup bagian kunci dahulu. Jawab dengan satu atau dua kalimat; tidak perlu mengh
 
 </details>
 
+## Latihan bergaya UTS 2018/2019
+
+Soal berikut ditulis baru dengan cakupan dan bentuk yang meniru UTS KDJK semester genap 2018/2019, bukan salinan soal ujian. Kerjakan pilihan ganda dan menjodohkan dahulu, lalu jelaskan alasan dengan kalimat sendiri. Tiap soal menguji materi Bab 1 saja.
+
+### Pilihan ganda
+
+**1.** Sekumpulan laptop terhubung ke satu titik akses sehingga gambarnya menyerupai jari-jari roda. Nama topologinya adalah ...
+
+- A. Cincin
+- B. Bintang
+- C. Bus
+- D. Internet
+
+**2.** Pada telepon tradisional, sumber daya sepanjang jalur disediakan selama panggilan, termasuk saat kedua pihak diam. Cara ini disebut ...
+
+- A. *Message switching*
+- B. *Datagram switching*
+- C. *Circuit switching*
+- D. *Broadcast*
+
+**3.** Manakah pernyataan yang paling tepat tentang LAN dan WAN?
+
+- A. LAN harus memakai Wi-Fi, sedangkan WAN harus memakai kabel.
+- B. Perbedaannya terutama pada cakupan wilayah, bukan jenis kabel.
+- C. LAN selalu memakai *circuit switching*.
+- D. WAN adalah nama topologi fisik.
+
+**4.** Paket IP melewati beberapa router sebelum mencapai jaringan tujuan. Pernyataan yang tepat adalah ...
+
+- A. Alamat menunjukkan tujuan, *routing* memilih jalur, dan *forwarding* meneruskan paket ke langkah berikutnya.
+- B. Alamat memilih jalur, *routing* mengirim sinyal, dan *forwarding* menyimpan berkas.
+- C. Semua paket wajib melewati satu jalur fisik khusus yang dipesan dari awal.
+- D. Router harus membaca isi aplikasi untuk mengetahui tujuan IP.
+
+### Menjodohkan
+
+**5.** Cocokkan contoh dengan jenis komunikasi yang paling khas pada soal UTS lama. Pilihan: **a** sirkuit, **b** datagram, **c** *virtual circuit*, **d** *broadcast* pada LAN bermedia bersama.
+
+| Contoh | Jawaban |
+|---|---|
+| PSTN tradisional | ... |
+| IP | ... |
+| ATM | ... |
+| Ethernet dengan media bersama | ... |
+
+### Uraian singkat
+
+**6.** Dua orang sama-sama mengirim berkas besar melalui satu jalur. Jelaskan mengapa *packet switching* memberi kesempatan bagi kedua pengiriman untuk bergantian memakai jalur. Sebutkan satu kemungkinan akibat ketika jalur ramai.
+
+**7.** Sebuah layanan panggilan suara baru akan diluncurkan. Jelaskan satu kebutuhan pengguna dan satu faktor di luar teknologi yang perlu dipertimbangkan agar layanan itu dapat dipakai luas.
+
+<details>
+<summary>Kunci dan pembahasan latihan bergaya UTS</summary>
+
+1. **B, bintang.** Semua perangkat terhubung ke satu titik pusat. “Internet” adalah jaringan dari banyak jaringan, bukan nama bentuk topologi seperti bintang.
+2. **C, circuit switching.** Sumber daya disediakan selama panggilan. Pada *packet switching*, pengguna berbagi jalur per paket.
+3. **B.** LAN dan WAN dibedakan terutama dari cakupannya. Keduanya dapat memakai beragam media dan rancangan.
+4. **A.** Alamat menyatakan tujuan; *routing* menentukan arah; *forwarding* adalah tindakan meneruskan paket melalui keluaran terpilih.
+5. **PSTN–a, IP–b, ATM–c, Ethernet bermedia bersama–d.** ATM memakai jalur **logis** yang dibentuk sebelumnya, sehingga tidak sama dengan sirkuit fisik khusus. Ethernet dengan *switch* modern perlu dibedakan dari contoh media bersama.
+6. Pesan dipecah menjadi paket. Setelah satu paket lewat, paket milik pengirim lain dapat memakai jalur sebelum semua paket pengirim pertama selesai. Jika jalur ramai, paket dapat mengantre sehingga waktu tunda naik; sebagian paket bahkan dapat hilang bila penampung penuh.
+7. Contoh kebutuhan: jeda suara kecil agar percakapan nyaman. Contoh faktor lain: standar agar perangkat berbeda dapat saling tersambung, aturan pemakaian spektrum, atau permintaan pasar yang cukup. Satu faktor yang dijelaskan dengan benar sudah memenuhi soal.
+
+</details>
+
 ## Rujukan dan batasan
 
 - Kontrak KOM1314 Semester 1 2026/2027, tabel “Topik Perkuliahan”, pertemuan 1.
 - Leon-Garcia dan Widjaja, *Communication Networks: Fundamental Concepts and Key Architectures*, edisi ke-2, Bab 1 §1.1–1.3.
 - Slide kuliah `Garcia-2003_ch1-Communication Networks and Services`, khususnya bagian layanan, evolusi arsitektur, packet versus circuit switching, dan faktor keberhasilan layanan.
+- `UTS KDJK 2019.pdf` (UTS KDJK semester genap 2018/2019) dalam paket contoh soal Sensei, dipakai sebagai patokan bentuk soal dan tingkat pertanyaan. Latihan di atas ditulis ulang dengan kasus baru.
 
 Ini adalah penjelasan ulang untuk belajar. Contoh aplikasi masa kini dipakai untuk mempermudah konsep dari buku tahun 2003/2004; rincian teknologi saat ini dapat berbeda dari contoh historis dalam bacaan.

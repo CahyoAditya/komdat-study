@@ -266,10 +266,83 @@ Jawab dahulu tanpa membuka kunci.
 
 </details>
 
+## Latihan bergaya UTS 2018/2019
+
+Soal ini ditulis baru dengan mengikuti bentuk soal pilihan ganda, menjodohkan, dan uraian singkat pada UTS KDJK semester genap 2018/2019. Fokusnya materi Bab 2. Tutup pembahasan dahulu dan jelaskan alasan, bukan hanya huruf jawaban.
+
+### Pilihan ganda
+
+**1.** Sebuah router menentukan sambungan keluar bagi paket berdasarkan alamat IP tujuan. Dalam model OSI, pekerjaan ini terutama berada pada lapisan ...
+
+- A. Physical
+- B. Data Link
+- C. Network
+- D. Session
+
+**2.** Browser meminta halaman web, sementara sebuah layanan lain pada laptop yang sama juga memakai jaringan. Informasi yang membantu sistem operasi menyerahkan balasan ke proses yang tepat adalah ...
+
+- A. Nomor port pada lapisan transport
+- B. Warna kabel
+- C. Nama topologi jaringan
+- D. Panjang sinyal radio
+
+**3.** Pernyataan yang tepat tentang TCP adalah ...
+
+- A. TCP membentuk hubungan logis dan menyediakan aliran byte berurutan.
+- B. TCP mewajibkan satu sirkuit fisik khusus sepanjang jaringan.
+- C. TCP bekerja pada lapisan fisik.
+- D. TCP menerjemahkan nama domain menjadi alamat IP.
+
+**4.** Ketika pengguna mengetik nama domain, protokol yang biasanya membantu menemukan alamat IP tujuan adalah ...
+
+- A. SMTP
+- B. DNS
+- C. Ethernet
+- D. TCP
+
+**5.** Saat data aplikasi dikirim dengan TCP melalui IP dan Ethernet, urutan pembungkusan dari atas ke bawah adalah ...
+
+- A. Ethernet → IP → TCP → aplikasi
+- B. Aplikasi → TCP → IP → Ethernet
+- C. IP → aplikasi → Ethernet → TCP
+- D. TCP → Ethernet → aplikasi → IP
+
+### Menjodohkan
+
+**6.** Cocokkan lapisan OSI dengan unit atau pekerjaan yang paling khas. Pilihan: **a** sinyal bit pada media, **b** frame pada satu sambungan, **c** paket dan rute antarnetwork, **d** segmen TCP antaraplikasi.
+
+| Lapisan | Jawaban |
+|---|---|
+| Physical | ... |
+| Data Link | ... |
+| Network | ... |
+| Transport | ... |
+
+### Uraian singkat
+
+**7.** Tulis tujuh lapisan OSI dari atas ke bawah. Berikan satu pekerjaan inti untuk lapisan Network dan Data Link agar keduanya tidak tertukar.
+
+**8.** Sebuah frame masuk ke router lalu paketnya diteruskan melalui sambungan dengan teknologi lain. Jelaskan apa yang terjadi pada pembungkus Data Link dan apakah router biasa harus memahami isi permintaan HTTP untuk melakukan pekerjaan itu.
+
+<details>
+<summary>Kunci dan pembahasan latihan bergaya UTS</summary>
+
+1. **C, Network.** Alamat IP dan keputusan rute antarnetwork berada pada lapisan jaringan. Data Link menangani pengiriman frame pada satu sambungan langsung.
+2. **A, nomor port.** Alamat IP membantu menemukan perangkat atau antarmukanya; port membantu memilih proses atau layanan pada perangkat tersebut.
+3. **A.** TCP membuat hubungan **logis** dan mengurutkan aliran byte. Hubungan ini berjalan di atas jaringan paket IP, bukan sirkuit fisik yang dipesan.
+4. **B, DNS.** DNS menyediakan informasi alamat dari nama. SMTP untuk surel, TCP untuk transport, dan Ethernet untuk pengiriman pada sambungan setempat.
+5. **B.** Data aplikasi menjadi isi segmen TCP; segmen menjadi isi paket IP; paket menjadi isi frame Ethernet. Saat diterima, pembungkus dibuka dengan urutan sebaliknya.
+6. **Physical–a, Data Link–b, Network–c, Transport–d.** Pada contoh TCP, PDU transport disebut segmen. Istilah PDU dapat berbeda menurut protokol yang dibahas.
+7. **Application → Presentation → Session → Transport → Network → Data Link → Physical.** Network memilih dan meneruskan paket melintasi beberapa jaringan; Data Link membawa frame ke tetangga pada satu sambungan.
+8. Router membuka frame yang masuk sampai terlihat paket IP, memilih sambungan keluar, lalu membuat frame baru yang sesuai dengan sambungan itu. Router biasa tidak perlu memahami isi HTTP untuk meneruskan paket berdasarkan informasi jaringan.
+
+</details>
+
 ## Rujukan dan batasan
 
 - Kontrak perkuliahan KOM1314 Semester 1 2026/2027, tabel topik **pertemuan 2**.
 - Alberto Leon-Garcia dan Indra Widjaja, *Communication Networks: Fundamental Concepts and Key Architectures*, edisi ke-2, Bab 2: “Applications and Layered Architectures”.
 - Slide kuliah `Garcia-2003_ch2-Applications and Layered Architectures.pdf`, bagian *Protocols, Services & Layering*, *OSI Reference Model*, *TCP/IP Architecture*, dan *Application Layer Protocols & Utilities*.
+- `UTS KDJK 2019.pdf` (UTS KDJK semester genap 2018/2019) dalam paket contoh soal Sensei, dipakai sebagai patokan bentuk soal dan tingkat pertanyaan. Latihan di atas ditulis ulang dengan kasus baru.
 
 Materi ini ditulis ulang untuk belajar. Contoh teknologi modern diberi penanda bila berbeda dari alur klasik pada slide; contoh alamat, perintah, dan hasil jaringan bukan hasil pengukuran nyata.

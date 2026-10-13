@@ -6,7 +6,7 @@ Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Ja
 
 1. Baca [Bab 1 — Jaringan Komputer dan Layanannya](bab-01-jaringan-dan-layanan.md).
 2. Lanjutkan [Bab 2 — Aplikasi dan Arsitektur Berlapis](bab-02-aplikasi-dan-arsitektur-berlapis.md).
-3. Coba jawab latihan setiap bab tanpa melihat kunci, lalu periksa alasannya.
+3. Coba jawab latihan dasar, lalu [latihan bergaya UTS pada Bab 1](bab-01-jaringan-dan-layanan.md#latihan-bergaya-uts-20182019) dan [Bab 2](bab-02-aplikasi-dan-arsitektur-berlapis.md#latihan-bergaya-uts-20182019) tanpa melihat kunci. Setelah itu, periksa alasannya.
 
 ## Peta materi menurut kontrak perkuliahan
 
@@ -51,5 +51,6 @@ Nomor subbagian seperti 1.1.1 dan 2.5.5 juga mengikuti daftar isi buku. Materi p
 - Alberto Leon-Garcia dan Indra Widjaja, *Communication Networks: Fundamental Concepts and Key Architectures*, edisi ke-2, Bab 1–2. Nama salinan menyebut “2003”, sedangkan halaman hak cipta buku edisi kedua mencantumkan 2004. Salinan PDF buku yang tersedia berisi halaman awal dan daftar isi; penjelasan rinci juga dirujukkan ke slide bab terkait.
 - Slide kuliah `Garcia-2003_ch1-Communication Networks and Services` dalam paket materi Sensei.
 - Slide kuliah `Garcia-2003_ch2-Applications and Layered Architectures.pdf` dalam paket materi Sensei.
+- `UTS KDJK 2019.pdf` dari paket contoh soal Sensei, yaitu UTS KDJK semester genap 2018/2019. Format pilihan ganda, menjodohkan, dan uraian singkat dijadikan patokan untuk latihan baru Bab 1–2. Soal asli juga memuat materi pertemuan 3–7 yang belum dicakup dua bab ini.
 
 Catatan ini merupakan penjelasan ulang, bukan salinan buku atau slide. Materi asli tidak disertakan karena hak cipta.
