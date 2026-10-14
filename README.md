@@ -4,7 +4,7 @@ Catatan belajar sederhana untuk mata kuliah **KOM1314 — Komunikasi Data dan Ja
 
 ## Mulai dari sini
 
-Untuk mengulang poin kuliah yang tercantum dalam kontrak, buka [cheatsheet Bab 1–7 menurut kontrak](cheatsheet-bab-01-07.md). Rangkuman ini mengikuti pertemuan 1–7 dan 9, disertai diagram teks serta [gambar line coding](diagram-line-coding.svg). Bab 7 dijadwalkan setelah UTS; catatan tiap bab tetap tersedia untuk contoh dan latihan lebih rinci.
+Untuk mengulang hitungan pada poin kuliah dalam kontrak, buka [cheatsheet rumus Bab 1–7](cheatsheet-bab-01-07.md). Isinya hanya rumus yang dikelompokkan menurut bab agar mudah disalin ke kertas. [Gambar line coding](diagram-line-coding.svg) tetap tersedia terpisah. Bab 7 dijadwalkan setelah UTS; catatan tiap bab tersedia untuk mekanisme, contoh, dan latihan lebih rinci.
 
 1. Baca [Bab 1 — Jaringan Komputer dan Layanannya](bab-01-jaringan-dan-layanan.md).
 2. Lanjutkan [Bab 2 — Aplikasi dan Arsitektur Berlapis](bab-02-aplikasi-dan-arsitektur-berlapis.md).
